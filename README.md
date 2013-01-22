@@ -6,7 +6,7 @@ Wrappers for <a href="https://developers.tradeking.com/documentation/getting-sta
 
 ## Requirements
 
-<a href="https://github.com/maraujop/requests-oauth">requests-oauth</a>
+<a href="https://github.com/maraujop/requests-oauth">requests-oauth</a> - 0.4.1
 
     pip install requests-oauth
 
