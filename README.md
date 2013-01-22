@@ -1,7 +1,7 @@
 tradeking-apis
 ==============
 
-Wrappers for TradeKing's API calls.
+Wrappers for <a href="https://developers.tradeking.com/documentation/getting-started">TradeKing's API</a> calls.
 
 
 ## Requirements
