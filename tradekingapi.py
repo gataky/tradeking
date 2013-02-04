@@ -28,7 +28,7 @@ class TradeKingAPI(object):
     def accounts(self):
         '''This call will return detailed balance and holding information for each
         account associated with a user.'''
-        url = '{0}/accounts.{2}'.format(self.HOST, self.format)
+        url = '{0}/accounts.{1}'.format(self.HOST, self.format)
         return self.client.get(url)
 
     def accounts_balances(self):
@@ -91,7 +91,7 @@ class TradeKingAPI(object):
         return self.client.get(url, data=data)
 
     def market_historical_search(self, symbols, interval, startdate, enddate):
-        url = '{0}//market/historical/search.{1}'.format(self.HOST, self.format)
+        url = '{0}/market/historical/search.{1}'.format(self.HOST, self.format)
         data = dict(symbols=symbols, interval=interval, startdate=startdate, enddate=enddate)
         return self.client.get(url, data=data)
 
@@ -181,7 +181,4 @@ api = TradeKingAPI()
 
 test = api.market_historical_search('goog', 'daily', '2012-01-10', '2013-01-20')
 
-import talib
-import matplotlib
-import numpy
 
