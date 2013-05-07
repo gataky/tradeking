@@ -100,13 +100,19 @@ class TradeKingAPI(object):
 
     def market_historical_search(self, symbols, interval, startdate, enddate):
         url = '{0}/market/historical/search.{1}'.format(self.HOST, self.format)
-        payload = dict(symbols=symbols, interval=interval, startdate=startdate, enddate=enddate)
+        payload = dict(symbols   = symbols, 
+                       interval  = interval, 
+                       startdate = startdate, 
+                       enddate   = enddate)
         return self.client.get(url, params=payload)
 
     def market_news_search(self, keywords, startdate, enddate, symbols=None, maxhits=10):
         url = '{0}/market/news/search.{1}'.format(self.HOST, self.format)
-        payload = dict(keywords=keywords, symbols=symbols, maxhits=maxhits,
-                       startdate=startdate, enddate=enddate)
+        payload = dict(keywords  = keywords, 
+                       symbols   = symbols, 
+                       maxhits   = maxhits,
+                       startdate = startdate, 
+                       enddate   = enddate)
         return self.client.get(url, params=payload)
 
     def market_news_id(self, id):
@@ -184,22 +190,19 @@ class TradeKingAPI(object):
             raise 'Invalid method {}'.format(method)
 #~------------------------------------------------------------------------------
 
+if __name__ == "__main__":
+    api = TradeKingAPI()
 
-api = TradeKingAPI()
+    print 'accounts()'
+    r = api.accounts()
+    assert r.status_code == 200
+     
+    print 'accounts_balances()'
+    r = api.accounts_balances()
+    assert r.status_code == 200
 
-print 'accounts()'
-r = api.accounts()
-assert r.status_code == 200
- 
-print 'accounts_balances()'
-r = api.accounts_balances()
-assert r.status_code == 200
+    print 'accounts_id()'
+    r = api.accounts_id('38434709')
+    assert r.status_code == 200
 
-print 'accounts_id()'
-r = api.accounts_id('38434709')
-assert r.status_code == 200
-
-print 'accounts_id_balances()'
-r = api.accounts_id_balances('38434709')
-assert r.status_code == 200
 
