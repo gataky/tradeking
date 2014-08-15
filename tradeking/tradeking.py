@@ -119,8 +119,10 @@ class TradeKingAPI(object):
         url = '{0}/market/news/{1}.{2}'.format(self.HOST, id, self.format)
         return self.client.get(url)
 
-    def market_options_search(self):
-        pass
+    def market_options_search(self, symbol, query=None, fids=None):
+        url = '{0}/market/options/search.{1}'.format(self.HOST, self.format)
+        payload = dict(symbol=symbol, query=query, fids=fids)
+        return self.client.get(url, params=payload)
 
     def market_options_strike(self):
         pass
