@@ -124,11 +124,15 @@ class TradeKingAPI(object):
         payload = dict(symbol=symbol, query=query, fids=fids)
         return self.client.get(url, params=payload)
 
-    def market_options_strike(self):
-        pass
+    def market_options_strikes(self, symbol):
+        url = '{0}/market/options/strikes.{1}'.format(self.HOST, self.format)
+        payload = dict(symbol=symbol)
+        return self.client.get(url, params=payload)
 
-    def market_options_expiration(self):
-        pass
+    def market_options_expirations(self, symbol):
+        url = '{0}/market/options/expirations.{1}'.format(self.HOST, self.format)
+        payload = dict(symbol=symbol)
+        return self.client.get(url, params=payload)
 
     def market_timesales(self):
         pass
