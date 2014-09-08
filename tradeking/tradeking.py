@@ -3,7 +3,6 @@ import requests
 
 from requests_oauthlib import OAuth1
 
-
 class TradeKingAPI(object):
 
     HOST = 'https://api.tradeking.com/v1'
@@ -199,16 +198,16 @@ class TradeKingAPI(object):
 if __name__ == "__main__":
     api = TradeKingAPI()
 
-    print 'accounts()'
+    print('accounts()')
     r = api.accounts()
     assert r.status_code == 200
      
-    print 'accounts_balances()'
+    print('accounts_balances()')
     r = api.accounts_balances()
     assert r.status_code == 200
 
-    print 'accounts_id()'
-    r = api.accounts_id('38434709')
-    assert r.status_code == 200
+#    print('accounts_id()')
+#    r = api.accounts_id('38434709')
+#    assert r.status_code == 200
 
 
