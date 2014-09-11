@@ -3,7 +3,6 @@ import requests
 
 from requests_oauthlib import OAuth1
 
-
 class TradeKingAPI(object):
 
     HOST = 'https://api.tradeking.com/v1'
@@ -124,11 +123,15 @@ class TradeKingAPI(object):
         payload = dict(symbol=symbol, query=query, fids=fids)
         return self.client.get(url, params=payload)
 
-    def market_options_strike(self):
-        pass
+    def market_options_strikes(self, symbol):
+        url = '{0}/market/options/strikes.{1}'.format(self.HOST, self.format)
+        payload = dict(symbol=symbol)
+        return self.client.get(url, params=payload)
 
-    def market_options_expiration(self):
-        pass
+    def market_options_expirations(self, symbol):
+        url = '{0}/market/options/expirations.{1}'.format(self.HOST, self.format)
+        payload = dict(symbol=symbol)
+        return self.client.get(url, params=payload)
 
     def market_timesales(self):
         pass
@@ -195,16 +198,16 @@ class TradeKingAPI(object):
 if __name__ == "__main__":
     api = TradeKingAPI()
 
-    print 'accounts()'
+    print('accounts()')
     r = api.accounts()
     assert r.status_code == 200
      
-    print 'accounts_balances()'
+    print('accounts_balances()')
     r = api.accounts_balances()
     assert r.status_code == 200
 
-    print 'accounts_id()'
-    r = api.accounts_id('38434709')
-    assert r.status_code == 200
+#    print('accounts_id()')
+#    r = api.accounts_id('38434709')
+#    assert r.status_code == 200
 
 
