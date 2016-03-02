@@ -75,17 +75,17 @@ class TradeKingAPI(object):
 #~------------------------------------------------------------------------------
 #~Trade Calls ------------------------------------------------------------------
     def accounts_id_orders(self, id, method='get', fixml=None):
-        url = '{0}/accounts/{1}/orders{2}'.format(self.HOST, id, self.format)
+        url = '{0}/accounts/{1}/orders.{2}'.format(self.HOST, id, self.format)
         if method == 'get':
             return self.client.get(url)
         elif method == 'post':
-            return self.client.post(url)
+            return self.client.post(url, data=fixml)
         else:
             raise "Invalid method {}".format(method)
 
-    def accounts_id_orders_preview(self, id):
+    def accounts_id_orders_preview(self, id, fixml):
         url = '{0}/accounts/{1}/orders/preview.{2}'.format(self.HOST, id, self.format)
-        return self.client.post(url)
+        return self.client.post(url, data=fixml)
 #~------------------------------------------------------------------------------
 #~Market Calls -----------------------------------------------------------------
     def market_clock(self):
